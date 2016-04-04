@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+something = File.realdirpath("../lib", __dir__)
+$LOAD_PATH.unshift(something)
+require "octocakeater"
+require 'rest-client'
+
+class Server
+  def get(path)
+    user = 'team1'
+    response = RestClient::Request.new(
+      method:   :get,
+      url:      "localhost:3000#{path}",
+      user:     user,
+      password: 'secret'
+    ).execute
+    JSON.parse(response)
+  end
+end
+
+server = Server.new
+
+robot = Octocakeater.new(
+  name: 'team1',
+  server: server
+)
+
+p status: robot.status, score: robot.score

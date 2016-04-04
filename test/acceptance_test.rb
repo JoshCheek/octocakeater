@@ -1,6 +1,6 @@
 require 'octocakeater'
 
-class Server
+class FakeServer
   def initialize
     @responses = {}
   end
@@ -17,7 +17,7 @@ end
 
 class AcceptanceTest < Minitest::Test
   def test_it_uses_the_api
-    server = Server.new
+    server = FakeServer.new
     robot = Octocakeater.new(
       name:   'octocakeater',
       server: server
