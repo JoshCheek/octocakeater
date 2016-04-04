@@ -33,7 +33,7 @@ class AcceptanceTest < Minitest::Test
       ]
     }
     assert_equal 'in_progress', robot.status
-    # assert_equal 14,            robot.score
+    assert_equal 14,            robot.score
 
     # get '/cake_eater/robots/octocakeater'
     # put '/cake_eater/robots/octocakeater'
